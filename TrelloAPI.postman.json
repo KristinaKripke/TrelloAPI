@@ -1,0 +1,3504 @@
+{
+	"info": {
+		"_postman_id": "d41be0c6-5e56-484b-b5e2-de25493c8b9f",
+		"name": "Trello API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44983175",
+		"_collection_link": "https://kristina-4005333.postman.co/workspace/Demo-API~60a29318-f8ab-4493-86b2-481730f86161/collection/44983175-d41be0c6-5e56-484b-b5e2-de25493c8b9f?action=share&source=collection_link&creator=44983175"
+	},
+	"item": [
+		{
+			"name": "Create Board",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "create board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set(\"createBoardId\", pm.response.json().id);",
+											"pm.collectionVariables.set(\"createBoardName\", pm.response.json().name);",
+											"pm.collectionVariables.set(\"createBoardUrl\", pm.response.json().url);",
+											"pm.collectionVariables.set(\"createBoardShortUrl\", pm.response.json().shortUrl);",
+											"",
+											"pm.test(\"Response matches expected data\", function () {",
+											"    const createBoardId = pm.collectionVariables.get(\"createBoardId\");",
+											"    const createBoardName = pm.collectionVariables.get(\"createBoardName\");",
+											"    const createBoardUrl = pm.collectionVariables.get(\"createBoardUrl\");",
+											"    const createBoardShortUrl = pm.collectionVariables.get(\"createBoardShortUrl\");",
+											"    const responseBody = pm.response.json();",
+											"    const expectedResponse = {",
+											"    \"id\": createBoardId,",
+											"    \"name\": createBoardName,",
+											"    \"desc\": \"\",",
+											"    \"descData\": null,",
+											"    \"closed\": false,",
+											"    \"idOrganization\": \"6852e02708f4a5298d688a04\",",
+											"    \"idEnterprise\": null,",
+											"    \"pinned\": false,",
+											"    \"url\": createBoardUrl,",
+											"    \"shortUrl\": createBoardShortUrl,",
+											"    \"prefs\": {",
+											"        \"permissionLevel\": \"private\",",
+											"        \"hideVotes\": false,",
+											"        \"voting\": \"disabled\",",
+											"        \"comments\": \"members\",",
+											"        \"invitations\": \"members\",",
+											"        \"selfJoin\": true,",
+											"        \"cardCovers\": true,",
+											"        \"showCompleteStatus\": true,",
+											"        \"cardCounts\": false,",
+											"        \"isTemplate\": false,",
+											"        \"cardAging\": \"regular\",",
+											"        \"calendarFeedEnabled\": false,",
+											"        \"hiddenPluginBoardButtons\": [],",
+											"        \"switcherViews\": [",
+											"            {",
+											"                \"viewType\": \"Board\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Table\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Calendar\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Dashboard\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Timeline\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Map\",",
+											"                \"enabled\": false",
+											"            }",
+											"        ],",
+											"        \"autoArchive\": null,",
+											"        \"background\": \"blue\",",
+											"        \"backgroundColor\": \"#0079BF\",",
+											"        \"backgroundDarkColor\": null,",
+											"        \"backgroundImage\": null,",
+											"        \"backgroundDarkImage\": null,",
+											"        \"backgroundImageScaled\": null,",
+											"        \"backgroundTile\": false,",
+											"        \"backgroundBrightness\": \"dark\",",
+											"        \"sharedSourceUrl\": null,",
+											"        \"backgroundBottomColor\": \"#0079BF\",",
+											"        \"backgroundTopColor\": \"#0079BF\",",
+											"        \"canBePublic\": true,",
+											"        \"canBeEnterprise\": true,",
+											"        \"canBeOrg\": true,",
+											"        \"canBePrivate\": true,",
+											"        \"canInvite\": true",
+											"    },",
+											"    \"labelNames\": {",
+											"        \"green\": \"\",",
+											"        \"yellow\": \"\",",
+											"        \"orange\": \"\",",
+											"        \"red\": \"\",",
+											"        \"purple\": \"\",",
+											"        \"blue\": \"\",",
+											"        \"sky\": \"\",",
+											"        \"lime\": \"\",",
+											"        \"pink\": \"\",",
+											"        \"black\": \"\",",
+											"        \"green_dark\": \"\",",
+											"        \"yellow_dark\": \"\",",
+											"        \"orange_dark\": \"\",",
+											"        \"red_dark\": \"\",",
+											"        \"purple_dark\": \"\",",
+											"        \"blue_dark\": \"\",",
+											"        \"sky_dark\": \"\",",
+											"        \"lime_dark\": \"\",",
+											"        \"pink_dark\": \"\",",
+											"        \"black_dark\": \"\",",
+											"        \"green_light\": \"\",",
+											"        \"yellow_light\": \"\",",
+											"        \"orange_light\": \"\",",
+											"        \"red_light\": \"\",",
+											"        \"purple_light\": \"\",",
+											"        \"blue_light\": \"\",",
+											"        \"sky_light\": \"\",",
+											"        \"lime_light\": \"\",",
+											"        \"pink_light\": \"\",",
+											"        \"black_light\": \"\"",
+											"    },",
+											"    \"limits\": {}",
+											"}",
+											"    pm.expect(responseBody).to.eql(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards?name=New Board&key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "New Board"
+										},
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create another board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set(\"AnotherBoardId\", pm.response.json().id);",
+											"pm.collectionVariables.set(\"AnotherBoardName\", pm.response.json().name);",
+											"pm.collectionVariables.set(\"AnotherBoardUrl\", pm.response.json().url);",
+											"pm.collectionVariables.set(\"AnotherBoardShortUrl\", pm.response.json().shortUrl);",
+											"",
+											"pm.test(\"Response matches expected data\", function () {",
+											"    const anotherBoardId = pm.collectionVariables.get(\"AnotherBoardId\");",
+											"    const anotherBoardName = pm.collectionVariables.get(\"AnotherBoardName\");",
+											"    const anotherBoardUrl = pm.collectionVariables.get(\"AnotherBoardUrl\");",
+											"    const anotherBoardShortUrl = pm.collectionVariables.get(\"AnotherBoardShortUrl\");",
+											"    const responseBody = pm.response.json();",
+											"    const expectedResponse = {",
+											"    \"id\": anotherBoardId,",
+											"    \"name\": anotherBoardName,",
+											"    \"desc\": \"\",",
+											"    \"descData\": null,",
+											"    \"closed\": false,",
+											"    \"idOrganization\": \"6852e02708f4a5298d688a04\",",
+											"    \"idEnterprise\": null,",
+											"    \"pinned\": false,",
+											"    \"url\": anotherBoardUrl,",
+											"    \"shortUrl\": anotherBoardShortUrl,",
+											"    \"prefs\": {",
+											"        \"permissionLevel\": \"private\",",
+											"        \"hideVotes\": false,",
+											"        \"voting\": \"disabled\",",
+											"        \"comments\": \"members\",",
+											"        \"invitations\": \"members\",",
+											"        \"selfJoin\": true,",
+											"        \"cardCovers\": true,",
+											"        \"showCompleteStatus\": true,",
+											"        \"cardCounts\": false,",
+											"        \"isTemplate\": false,",
+											"        \"cardAging\": \"regular\",",
+											"        \"calendarFeedEnabled\": false,",
+											"        \"hiddenPluginBoardButtons\": [],",
+											"        \"switcherViews\": [",
+											"            {",
+											"                \"viewType\": \"Board\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Table\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Calendar\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Dashboard\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Timeline\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Map\",",
+											"                \"enabled\": false",
+											"            }",
+											"        ],",
+											"        \"autoArchive\": null,",
+											"        \"background\": \"blue\",",
+											"        \"backgroundColor\": \"#0079BF\",",
+											"        \"backgroundDarkColor\": null,",
+											"        \"backgroundImage\": null,",
+											"        \"backgroundDarkImage\": null,",
+											"        \"backgroundImageScaled\": null,",
+											"        \"backgroundTile\": false,",
+											"        \"backgroundBrightness\": \"dark\",",
+											"        \"sharedSourceUrl\": null,",
+											"        \"backgroundBottomColor\": \"#0079BF\",",
+											"        \"backgroundTopColor\": \"#0079BF\",",
+											"        \"canBePublic\": true,",
+											"        \"canBeEnterprise\": true,",
+											"        \"canBeOrg\": true,",
+											"        \"canBePrivate\": true,",
+											"        \"canInvite\": true",
+											"    },",
+											"    \"labelNames\": {",
+											"        \"green\": \"\",",
+											"        \"yellow\": \"\",",
+											"        \"orange\": \"\",",
+											"        \"red\": \"\",",
+											"        \"purple\": \"\",",
+											"        \"blue\": \"\",",
+											"        \"sky\": \"\",",
+											"        \"lime\": \"\",",
+											"        \"pink\": \"\",",
+											"        \"black\": \"\",",
+											"        \"green_dark\": \"\",",
+											"        \"yellow_dark\": \"\",",
+											"        \"orange_dark\": \"\",",
+											"        \"red_dark\": \"\",",
+											"        \"purple_dark\": \"\",",
+											"        \"blue_dark\": \"\",",
+											"        \"sky_dark\": \"\",",
+											"        \"lime_dark\": \"\",",
+											"        \"pink_dark\": \"\",",
+											"        \"black_dark\": \"\",",
+											"        \"green_light\": \"\",",
+											"        \"yellow_light\": \"\",",
+											"        \"orange_light\": \"\",",
+											"        \"red_light\": \"\",",
+											"        \"purple_light\": \"\",",
+											"        \"blue_light\": \"\",",
+											"        \"sky_light\": \"\",",
+											"        \"lime_light\": \"\",",
+											"        \"pink_light\": \"\",",
+											"        \"black_light\": \"\"",
+											"    },",
+											"    \"limits\": {}",
+											"}",
+											"    pm.expect(responseBody).to.eql(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards?name=Another Board&key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Another Board"
+										},
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Create board without query params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody).to.have.property('error');",
+											"    pm.expect(responseBody.message).to.equal('invalid value for name');",
+											"    pm.expect(responseBody.error).to.equal('ERROR');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create board without token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function (){",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody.message).to.equal('missing scopes');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards?name=Board&key={{key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Board"
+										},
+										{
+											"key": "key",
+											"value": "{{key}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create board without key",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function (){",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid key');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards?name=Board&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Board"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create board without name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function (){",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody).to.have.property('error');",
+											"    pm.expect(responseBody.message).to.equal('invalid value for name');",
+											"    pm.expect(responseBody.error).to.equal('ERROR');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards?token={{token}}&key={{key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "key",
+											"value": "{{key}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get Boards",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get all boards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});",
+											"",
+											"pm.test('Response body', () => {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('array');",
+											"    pm.expect(responseBody.length).to.be.above(0);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/members/me/boards?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"members",
+										"me",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set('getBoardId', pm.response.json().id);",
+											"pm.collectionVariables.set('getBoardName', pm.response.json().name);",
+											"pm.collectionVariables.set('getBoardUrl', pm.response.json().url);",
+											"pm.collectionVariables.set('getBoardShortUrl', pm.response.json().shortUrl);",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    const getBoardId = pm.collectionVariables.get('getBoardId');",
+											"    const getBoardName = pm.collectionVariables.get('getBoardName');",
+											"    const getBoardUrl = pm.collectionVariables.get('getBoardUrl');",
+											"    const getBoardShortUrl = pm.collectionVariables.get('getBoardShortUrl');",
+											"",
+											"    const expectedResponse = ",
+											"    {",
+											"    \"id\": getBoardId,",
+											"    \"name\": getBoardName,",
+											"    \"desc\": \"\",",
+											"    \"descData\": null,",
+											"    \"closed\": false,",
+											"    \"idOrganization\": \"6852e02708f4a5298d688a04\",",
+											"    \"idEnterprise\": null,",
+											"    \"pinned\": false,",
+											"    \"url\": getBoardUrl,",
+											"    \"shortUrl\": getBoardShortUrl,",
+											"    \"prefs\": {",
+											"        \"permissionLevel\": \"private\",",
+											"        \"hideVotes\": false,",
+											"        \"voting\": \"disabled\",",
+											"        \"comments\": \"members\",",
+											"        \"invitations\": \"members\",",
+											"        \"selfJoin\": true,",
+											"        \"cardCovers\": true,",
+											"        \"showCompleteStatus\": true,",
+											"        \"cardCounts\": false,",
+											"        \"isTemplate\": false,",
+											"        \"cardAging\": \"regular\",",
+											"        \"calendarFeedEnabled\": false,",
+											"        \"hiddenPluginBoardButtons\": [],",
+											"        \"switcherViews\": [",
+											"            {",
+											"                \"viewType\": \"Board\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Table\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Calendar\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Dashboard\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Timeline\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Map\",",
+											"                \"enabled\": false",
+											"            }",
+											"        ],",
+											"        \"autoArchive\": null,",
+											"        \"background\": \"blue\",",
+											"        \"backgroundColor\": \"#0079BF\",",
+											"        \"backgroundDarkColor\": null,",
+											"        \"backgroundImage\": null,",
+											"        \"backgroundDarkImage\": null,",
+											"        \"backgroundImageScaled\": null,",
+											"        \"backgroundTile\": false,",
+											"        \"backgroundBrightness\": \"dark\",",
+											"        \"sharedSourceUrl\": null,",
+											"        \"backgroundBottomColor\": \"#0079BF\",",
+											"        \"backgroundTopColor\": \"#0079BF\",",
+											"        \"canBePublic\": true,",
+											"        \"canBeEnterprise\": true,",
+											"        \"canBeOrg\": true,",
+											"        \"canBePrivate\": true,",
+											"        \"canInvite\": true",
+											"    },",
+											"    \"labelNames\": {",
+											"        \"green\": \"\",",
+											"        \"yellow\": \"\",",
+											"        \"orange\": \"\",",
+											"        \"red\": \"\",",
+											"        \"purple\": \"\",",
+											"        \"blue\": \"\",",
+											"        \"sky\": \"\",",
+											"        \"lime\": \"\",",
+											"        \"pink\": \"\",",
+											"        \"black\": \"\",",
+											"        \"green_dark\": \"\",",
+											"        \"yellow_dark\": \"\",",
+											"        \"orange_dark\": \"\",",
+											"        \"red_dark\": \"\",",
+											"        \"purple_dark\": \"\",",
+											"        \"blue_dark\": \"\",",
+											"        \"sky_dark\": \"\",",
+											"        \"lime_dark\": \"\",",
+											"        \"pink_dark\": \"\",",
+											"        \"black_dark\": \"\",",
+											"        \"green_light\": \"\",",
+											"        \"yellow_light\": \"\",",
+											"        \"orange_light\": \"\",",
+											"        \"red_light\": \"\",",
+											"        \"purple_light\": \"\",",
+											"        \"blue_light\": \"\",",
+											"        \"sky_light\": \"\",",
+											"        \"lime_light\": \"\",",
+											"        \"pink_light\": \"\",",
+											"        \"black_light\": \"\"",
+											"    }",
+											"}",
+											"    pm.expect(responseBody).to.eql(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Get board without token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody.message).to.equal('missing scopes');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?key={{key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get board without id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"    pm.expect(responseBody).to.equal('invalid id');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?token={{token}}&key={{key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "key",
+											"value": "{{key}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get board without key",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid key')",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Update Board",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Update board name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set('updatedBoardName', pm.response.json().name);",
+											"pm.collectionVariables.set('updatedBoardUrl', pm.response.json().url);",
+											"pm.collectionVariables.set('updatedBoardShortUrl', pm.response.json().shortUrl);",
+											"pm.collectionVariables.set('updatedBoardLabel', pm.response.json().labelNames.red);",
+											"",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    const getBoardId = pm.collectionVariables.get('getBoardId');",
+											"    const updatedBoardName = pm.collectionVariables.get('updatedBoardName');",
+											"    const updatedBoardUrl = pm.collectionVariables.get('updatedBoardUrl');",
+											"    const updatedBoardShortUrl = pm.collectionVariables.get('updatedBoardShortUrl');",
+											"",
+											"    const expectedResponse = ",
+											"    {",
+											"    \"id\": getBoardId,",
+											"    \"name\": updatedBoardName,",
+											"    \"desc\": \"\",",
+											"    \"descData\": null,",
+											"    \"closed\": false,",
+											"    \"idOrganization\": \"6852e02708f4a5298d688a04\",",
+											"    \"idEnterprise\": null,",
+											"    \"pinned\": false,",
+											"    \"url\": updatedBoardUrl,",
+											"    \"shortUrl\": updatedBoardShortUrl,",
+											"    \"prefs\": {",
+											"        \"permissionLevel\": \"private\",",
+											"        \"hideVotes\": false,",
+											"        \"voting\": \"disabled\",",
+											"        \"comments\": \"members\",",
+											"        \"invitations\": \"members\",",
+											"        \"selfJoin\": true,",
+											"        \"cardCovers\": true,",
+											"        \"showCompleteStatus\": true,",
+											"        \"cardCounts\": false,",
+											"        \"isTemplate\": false,",
+											"        \"cardAging\": \"regular\",",
+											"        \"calendarFeedEnabled\": false,",
+											"        \"hiddenPluginBoardButtons\": [],",
+											"        \"switcherViews\": [",
+											"            {",
+											"                \"viewType\": \"Board\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Table\",",
+											"                \"enabled\": true",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Calendar\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Dashboard\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Timeline\",",
+											"                \"enabled\": false",
+											"            },",
+											"            {",
+											"                \"viewType\": \"Map\",",
+											"                \"enabled\": false",
+											"            }",
+											"        ],",
+											"        \"autoArchive\": null,",
+											"        \"background\": \"blue\",",
+											"        \"backgroundColor\": \"#0079BF\",",
+											"        \"backgroundDarkColor\": null,",
+											"        \"backgroundImage\": null,",
+											"        \"backgroundDarkImage\": null,",
+											"        \"backgroundImageScaled\": null,",
+											"        \"backgroundTile\": false,",
+											"        \"backgroundBrightness\": \"dark\",",
+											"        \"sharedSourceUrl\": null,",
+											"        \"backgroundBottomColor\": \"#0079BF\",",
+											"        \"backgroundTopColor\": \"#0079BF\",",
+											"        \"canBePublic\": true,",
+											"        \"canBeEnterprise\": true,",
+											"        \"canBeOrg\": true,",
+											"        \"canBePrivate\": true,",
+											"        \"canInvite\": true",
+											"    },",
+											"    \"labelNames\": {",
+											"        \"green\": \"\",",
+											"        \"yellow\": \"\",",
+											"        \"orange\": \"\",",
+											"        \"red\": \"FAILED\",",
+											"        \"purple\": \"\",",
+											"        \"blue\": \"\",",
+											"        \"sky\": \"\",",
+											"        \"lime\": \"\",",
+											"        \"pink\": \"\",",
+											"        \"black\": \"\",",
+											"        \"green_dark\": \"\",",
+											"        \"yellow_dark\": \"\",",
+											"        \"orange_dark\": \"\",",
+											"        \"red_dark\": \"\",",
+											"        \"purple_dark\": \"\",",
+											"        \"blue_dark\": \"\",",
+											"        \"sky_dark\": \"\",",
+											"        \"lime_dark\": \"\",",
+											"        \"pink_dark\": \"\",",
+											"        \"black_dark\": \"\",",
+											"        \"green_light\": \"\",",
+											"        \"yellow_light\": \"\",",
+											"        \"orange_light\": \"\",",
+											"        \"red_light\": \"\",",
+											"        \"purple_light\": \"\",",
+											"        \"blue_light\": \"\",",
+											"        \"sky_light\": \"\",",
+											"        \"lime_light\": \"\",",
+											"        \"pink_light\": \"\",",
+											"        \"black_light\": \"\"",
+											"    }",
+											"}",
+											"    pm.expect(responseBody).to.deep.equal(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?key={{key}}&token={{token}}&name=Updated Board&labelNames/red=FAILED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "name",
+											"value": "Updated Board"
+										},
+										{
+											"key": "labelNames/red",
+											"value": "FAILED"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{getBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Update board without token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody.message).to.equal('missing scopes');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?key={{key}}&name=Update board&labelNames/red",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "name",
+											"value": "Update board"
+										},
+										{
+											"key": "labelNames/red",
+											"value": null
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update board without key",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid key');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?token={{token}}&name=Update board&labelNames/red",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "name",
+											"value": "Update board"
+										},
+										{
+											"key": "labelNames/red",
+											"value": null
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update board without board id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid id');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?token={{token}}&name=Update board&labelNames/red&key={{key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "name",
+											"value": "Update board"
+										},
+										{
+											"key": "labelNames/red",
+											"value": null
+										},
+										{
+											"key": "key",
+											"value": "{{key}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Delete Board",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Delete board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('_value');",
+											"    pm.expect(responseBody._value).to.be.null;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Delete board without auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody.message).to.equal('missing scopes');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{AnotherBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete board without id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid id');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get deleted board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('The requested resource was not found.');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/boards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"boards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "686cf39865a277ebdc4275b1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Create a list",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Create a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set(\"listId\", pm.response.json().id);",
+											"pm.collectionVariables.set(\"listName\", pm.response.json().name);",
+											"pm.collectionVariables.set(\"listPos\", pm.response.json().pos);",
+											"pm.collectionVariables.set(\"listBoardId\", pm.response.json().idBoard);",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    const listId = pm.collectionVariables.get(\"listId\");",
+											"    const listName = pm.collectionVariables.get(\"listName\");",
+											"    const listPos = pm.collectionVariables.get(\"listPos\");",
+											"    const listBoardId = pm.collectionVariables.get(\"listBoardId\");",
+											"",
+											"    const expectedResponse = ",
+											"    {",
+											"    \"id\": listId,",
+											"    \"name\": listName,",
+											"    \"closed\": false,",
+											"    \"color\": null,",
+											"    \"idBoard\": listBoardId,",
+											"    \"pos\": listPos,",
+											"    \"type\": null,",
+											"    \"datasource\": {",
+											"        \"filter\": false",
+											"    },",
+											"    \"limits\": {}",
+											"}",
+											"    pm.expect(responseBody).to.deep.equal(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists?key={{key}}&token={{token}}&name=New List&idBoard={{AnotherBoardId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "name",
+											"value": "New List"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{AnotherBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Create list without token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"    const boardId = pm.collectionVariables.get('createBoardId')",
+											"    const expectMessage = `unauthorized board list requested ${boardId}`;",
+											"    pm.expect(responseBody).to.equal(expectMessage);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists?key={{key}}&name=New List&idBoard={{createBoardId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "New List"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create list without key",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"    ",
+											"    pm.expect(responseBody).to.equal('invalid key');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists?token={{token}}&name=New List&idBoard={{createBoardId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "name",
+											"value": "New List"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create list without name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"    ",
+											"    pm.expect(responseBody).to.equal('invalid value for name');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists?key={{key}}&token={{token}}&idBoard={{createBoardId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "name",
+											"value": "New List",
+											"disabled": true
+										},
+										{
+											"key": "idBoard",
+											"value": "{{createBoardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create list without board id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"    ",
+											"    pm.expect(responseBody).to.equal('invalid value for idBoard');",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists?key={{key}}&token={{token}}&name=New List",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "name",
+											"value": "New List"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{createBoardId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get a list",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set('getListPos', pm.response.json().pos);",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    const getListId = pm.collectionVariables.get(\"listId\");",
+											"    const getListName = pm.collectionVariables.get(\"listName\");",
+											"    const getIdBoard = pm.collectionVariables.get(\"listBoardId\");",
+											"    const getPos = pm.collectionVariables.get('getListPos');",
+											"",
+											"    const expectedResponse = ",
+											"    {",
+											"    \"id\": getListId,",
+											"    \"name\": getListName,",
+											"    \"closed\": false,",
+											"    \"color\": null,",
+											"    \"idBoard\": getIdBoard,",
+											"    \"pos\": getPos,",
+											"    \"type\": null,",
+											"    \"datasource\": {",
+											"        \"filter\": false",
+											"    }",
+											"}",
+											"    pm.expect(responseBody).to.deep.equal(expectedResponse);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Get a list without auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('unauthorized permission requested');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a list without auth Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid id');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists/:id?token={{token}}&key={{key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists",
+										":id"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "key",
+											"value": "{{key}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Move list to a board",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Move list to a board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set('moveListPos', pm.response.json().pos);",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    const moveListId = pm.collectionVariables.get(\"listId\");",
+											"    const moveBoardId = pm.collectionVariables.get(\"AnotherBoardId\");",
+											"    const newPos = pm.collectionVariables.get('moveListPos');",
+											"",
+											"    const expectedResponse = ",
+											"    {",
+											"    \"id\": moveListId,",
+											"    \"name\": \"New List\",",
+											"    \"closed\": false,",
+											"    \"color\": null,",
+											"    \"idBoard\": moveBoardId,",
+											"    \"pos\": newPos,",
+											"    \"type\": null,",
+											"    \"datasource\": {",
+											"        \"filter\": false",
+											"    }",
+											"}",
+											"    pm.expect(responseBody).to.deep.equal(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists/:id/idBoard?key={{key}}&token={{token}}&value={{AnotherBoardId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists",
+										":id",
+										"idBoard"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "value",
+											"value": "{{AnotherBoardId}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Move list without board id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody).to.have.property('error');",
+											"    pm.expect(responseBody.message).to.equal('invalid id');",
+											"    pm.expect(responseBody.error).to.equal('BAD_REQUEST_ERROR');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists/:id/idBoard?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists",
+										":id",
+										"idBoard"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Move list without list id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid id')",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists/:id/idBoard?key={{key}}&token={{token}}&value={{createBoardId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists",
+										":id",
+										"idBoard"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "value",
+											"value": "{{createBoardId}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Move list to a board without auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody.message).to.equal('missing scopes');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/lists/:id/idBoard?value={{createBoardId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"lists",
+										":id",
+										"idBoard"
+									],
+									"query": [
+										{
+											"key": "value",
+											"value": "{{createBoardId}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Create a card",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Create a card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set(\"cardId\", pm.response.json().id);",
+											"pm.collectionVariables.set('dateLastActivity', pm.response.json().dateLastActivity);",
+											"pm.collectionVariables.set('cardBoardId', pm.response.json().idBoard);",
+											"pm.collectionVariables.set('cardListId', pm.response.json().idList);",
+											"pm.collectionVariables.set('cardNodeId', pm.response.json().nodeId);",
+											"pm.collectionVariables.set('cardShortLink', pm.response.json().shortLink);",
+											"pm.collectionVariables.set('cardShortUrl', pm.response.json().shortUrl);",
+											"pm.collectionVariables.set('cardUrl', pm.response.json().url);",
+											"pm.collectionVariables.set('cardPos', pm.response.json().pos);",
+											"pm.collectionVariables.set('cardIdShort', pm.response.json().idShort);",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    const newCardId = pm.collectionVariables.get(\"cardId\");",
+											"    const newDateLastActivity = pm.collectionVariables.get(\"dateLastActivity\");",
+											"    const newCardBoardId = pm.collectionVariables.get(\"cardBoardId\");",
+											"    const newCardListId = pm.collectionVariables.get(\"cardListId\");",
+											"    const newCardNodeId = pm.collectionVariables.get(\"cardNodeId\");",
+											"    const newCardShortLink = pm.collectionVariables.get(\"cardShortLink\");",
+											"    const newCardShortUrl = pm.collectionVariables.get(\"cardShortUrl\");",
+											"    const newCardUrl = pm.collectionVariables.get(\"cardUrl\");",
+											"    const newPos = pm.collectionVariables.get(\"cardPos\");",
+											"    const newIdShort = pm.collectionVariables.get(\"cardIdShort\");",
+											"",
+											"    const expectedResponse = {",
+											"    \"id\": newCardId,",
+											"    \"badges\": {",
+											"        \"attachments\": 0,",
+											"        \"fogbugz\": \"\",",
+											"        \"checkItems\": 0,",
+											"        \"checkItemsChecked\": 0,",
+											"        \"checkItemsEarliestDue\": null,",
+											"        \"comments\": 0,",
+											"        \"description\": false,",
+											"        \"due\": null,",
+											"        \"dueComplete\": false,",
+											"        \"lastUpdatedByAi\": false,",
+											"        \"start\": null,",
+											"        \"externalSource\": null,",
+											"        \"attachmentsByType\": {",
+											"            \"trello\": {",
+											"                \"board\": 0,",
+											"                \"card\": 0",
+											"            }",
+											"        },",
+											"        \"location\": false,",
+											"        \"votes\": 0,",
+											"        \"maliciousAttachments\": 0,",
+											"        \"viewingMemberVoted\": false,",
+											"        \"subscribed\": false",
+											"    },",
+											"    \"checkItemStates\": [],",
+											"    \"closed\": false,",
+											"    \"dueComplete\": false,",
+											"    \"dateLastActivity\": newDateLastActivity,",
+											"    \"desc\": \"\",",
+											"    \"descData\": {",
+											"        \"emoji\": {}",
+											"    },",
+											"    \"due\": null,",
+											"    \"dueReminder\": null,",
+											"    \"email\": null,",
+											"    \"idBoard\": newCardBoardId,",
+											"    \"idChecklists\": [],",
+											"    \"idList\": newCardListId,",
+											"    \"idMembers\": [],",
+											"    \"idMembersVoted\": [],",
+											"    \"idShort\": newIdShort,",
+											"    \"idAttachmentCover\": null,",
+											"    \"labels\": [],",
+											"    \"idLabels\": [],",
+											"    \"manualCoverAttachment\": false,",
+											"    \"name\": \"\",",
+											"    \"nodeId\": newCardNodeId,",
+											"    \"pinned\": false,",
+											"    \"pos\": newPos,",
+											"    \"shortLink\": newCardShortLink,",
+											"    \"shortUrl\": newCardShortUrl,",
+											"    \"start\": null,",
+											"    \"subscribed\": false,",
+											"    \"url\": newCardUrl,",
+											"    \"cover\": {",
+											"        \"idAttachment\": null,",
+											"        \"color\": null,",
+											"        \"idUploadedBackground\": null,",
+											"        \"size\": \"normal\",",
+											"        \"brightness\": \"dark\",",
+											"        \"idPlugin\": null",
+											"    },",
+											"    \"isTemplate\": false,",
+											"    \"cardRole\": null,",
+											"    \"mirrorSourceId\": null,",
+											"    \"attachments\": [],",
+											"    \"stickers\": [],",
+											"    \"limits\": {}",
+											"}",
+											"    pm.expect(responseBody).to.deep.equal(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards?key={{key}}&token={{token}}&idList={{listId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "idList",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create another card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.collectionVariables.set(\"anothercardId\", pm.response.json().id);",
+											"pm.collectionVariables.set('anotherdateLastActivity', pm.response.json().dateLastActivity);",
+											"pm.collectionVariables.set('anothercardBoardId', pm.response.json().idBoard);",
+											"pm.collectionVariables.set('anothercardListId', pm.response.json().idList);",
+											"pm.collectionVariables.set('anothercardNodeId', pm.response.json().nodeId);",
+											"pm.collectionVariables.set('anothercardShortLink', pm.response.json().shortLink);",
+											"pm.collectionVariables.set('anothercardShortUrl', pm.response.json().shortUrl);",
+											"pm.collectionVariables.set('anothercardUrl', pm.response.json().url);",
+											"pm.collectionVariables.set('anothercardPos', pm.response.json().pos);",
+											"pm.collectionVariables.set('anothercardIdShort', pm.response.json().idShort);",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"    const anotherCardId = pm.collectionVariables.get(\"anothercardId\");",
+											"    const anotherDateLastActivity = pm.collectionVariables.get(\"anotherdateLastActivity\");",
+											"    const anotherCardBoardId = pm.collectionVariables.get(\"anothercardBoardId\");",
+											"    const anotherCardListId = pm.collectionVariables.get(\"anothercardListId\");",
+											"    const anotherCardNodeId = pm.collectionVariables.get(\"anothercardNodeId\");",
+											"    const anotherCardShortLink = pm.collectionVariables.get(\"anothercardShortLink\");",
+											"    const anotherCardShortUrl = pm.collectionVariables.get(\"anothercardShortUrl\");",
+											"    const anotherCardUrl = pm.collectionVariables.get(\"anothercardUrl\");",
+											"    const anotherPos = pm.collectionVariables.get(\"anothercardPos\");",
+											"    const anotherIdShort = pm.collectionVariables.get(\"anothercardIdShort\");",
+											"",
+											"    const expectedResponse = {",
+											"    \"id\": anotherCardId,",
+											"    \"badges\": {",
+											"        \"attachments\": 0,",
+											"        \"fogbugz\": \"\",",
+											"        \"checkItems\": 0,",
+											"        \"checkItemsChecked\": 0,",
+											"        \"checkItemsEarliestDue\": null,",
+											"        \"comments\": 0,",
+											"        \"description\": false,",
+											"        \"due\": null,",
+											"        \"dueComplete\": false,",
+											"        \"lastUpdatedByAi\": false,",
+											"        \"start\": null,",
+											"        \"externalSource\": null,",
+											"        \"attachmentsByType\": {",
+											"            \"trello\": {",
+											"                \"board\": 0,",
+											"                \"card\": 0",
+											"            }",
+											"        },",
+											"        \"location\": false,",
+											"        \"votes\": 0,",
+											"        \"maliciousAttachments\": 0,",
+											"        \"viewingMemberVoted\": false,",
+											"        \"subscribed\": false",
+											"    },",
+											"    \"checkItemStates\": [],",
+											"    \"closed\": false,",
+											"    \"dueComplete\": false,",
+											"    \"dateLastActivity\": anotherDateLastActivity,",
+											"    \"desc\": \"\",",
+											"    \"descData\": {",
+											"        \"emoji\": {}",
+											"    },",
+											"    \"due\": null,",
+											"    \"dueReminder\": null,",
+											"    \"email\": null,",
+											"    \"idBoard\": anotherCardBoardId,",
+											"    \"idChecklists\": [],",
+											"    \"idList\": anotherCardListId,",
+											"    \"idMembers\": [],",
+											"    \"idMembersVoted\": [],",
+											"    \"idShort\": anotherIdShort,",
+											"    \"idAttachmentCover\": null,",
+											"    \"labels\": [],",
+											"    \"idLabels\": [],",
+											"    \"manualCoverAttachment\": false,",
+											"    \"name\": \"\",",
+											"    \"nodeId\": anotherCardNodeId,",
+											"    \"pinned\": false,",
+											"    \"pos\": anotherPos,",
+											"    \"shortLink\": anotherCardShortLink,",
+											"    \"shortUrl\": anotherCardShortUrl,",
+											"    \"start\": null,",
+											"    \"subscribed\": false,",
+											"    \"url\": anotherCardUrl,",
+											"    \"cover\": {",
+											"        \"idAttachment\": null,",
+											"        \"color\": null,",
+											"        \"idUploadedBackground\": null,",
+											"        \"size\": \"normal\",",
+											"        \"brightness\": \"dark\",",
+											"        \"idPlugin\": null",
+											"    },",
+											"    \"isTemplate\": false,",
+											"    \"cardRole\": null,",
+											"    \"mirrorSourceId\": null,",
+											"    \"attachments\": [],",
+											"    \"stickers\": [],",
+											"    \"limits\": {}",
+											"}",
+											"    pm.expect(responseBody).to.deep.equal(expectedResponse);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards?key={{key}}&token={{token}}&idList={{listId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "idList",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Create card without auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody.message).to.equal('missing scopes');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards?idList={{listId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"disabled": true
+										},
+										{
+											"key": "idList",
+											"value": "{{listId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create card without list id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid value for idList');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "idList",
+											"value": "{{listId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get a card",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody.id).to.equal(pm.collectionVariables.get('cardId'));",
+											"    pm.expect(responseBody.dateLastActivity).to.equal(pm.collectionVariables.get('dateLastActivity'));",
+											"    pm.expect(responseBody.idBoard).to.equal(pm.collectionVariables.get('cardBoardId'));",
+											"    pm.expect(responseBody.idList).to.equal(pm.collectionVariables.get('cardListId'));",
+											"    pm.expect(responseBody.idShort).to.equal(pm.collectionVariables.get('cardIdShort'));",
+											"    pm.expect(responseBody.nodeId).to.equal(pm.collectionVariables.get('cardNodeId'));",
+											"    pm.expect(responseBody.pos).to.equal(pm.collectionVariables.get('cardPos'));",
+											"    pm.expect(responseBody.shortLink).to.equal(pm.collectionVariables.get('cardShortLink'));",
+											"    pm.expect(responseBody.shortUrl).to.equal(pm.collectionVariables.get('cardShortUrl'));",
+											"    pm.expect(responseBody.url).to.equal(pm.collectionVariables.get('cardUrl'));",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{cardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Get card without auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('unauthorized card permission requested');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{cardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get card without id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid id');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Delete card",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Delete a card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 2000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('limits');",
+											"    pm.expect(responseBody.limits).to.be.an('object');",
+											"    pm.expect(Object.keys(responseBody.limits)).to.have.lengthOf(0);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{cardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Delete card without auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.json();",
+											"",
+											"    pm.expect(responseBody).to.be.an('object');",
+											"    pm.expect(responseBody).to.have.property('message');",
+											"    pm.expect(responseBody.message).to.equal('missing scopes');",
+											"    });"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{anothercardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete card without id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('invalid id');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete card that is already deleted",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('The requested resource was not found.');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{cardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get card that is deleted",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Response time is less than 800ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(800);",
+											"});",
+											"",
+											"pm.test('Response body', function () {",
+											"    const responseBody = pm.response.text();",
+											"",
+											"    pm.expect(responseBody).to.equal('The requested resource was not found.');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cards/:id?key={{key}}&token={{token}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cards",
+										":id"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{cardId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.trello.com/1",
+			"type": "string"
+		},
+		{
+			"key": "createBoardId",
+			"value": "686f68bda2bf1d6e16972a5d"
+		},
+		{
+			"key": "createBoardName",
+			"value": "New Board"
+		},
+		{
+			"key": "createBoardUrl",
+			"value": "https://trello.com/b/0iJ8dz9j/new-board"
+		},
+		{
+			"key": "createBoardShortUrl",
+			"value": "https://trello.com/b/0iJ8dz9j"
+		},
+		{
+			"key": "getBoardId",
+			"value": "686f6cd77ab60bc330407718"
+		},
+		{
+			"key": "getBoardName",
+			"value": "New Board"
+		},
+		{
+			"key": "getBoardUrl",
+			"value": "https://trello.com/b/zd2X1mR2/new-board"
+		},
+		{
+			"key": "getBoardShortUrl",
+			"value": "https://trello.com/b/zd2X1mR2"
+		},
+		{
+			"key": "updatedBoardId",
+			"value": "686e2f4496bead65bde32131"
+		},
+		{
+			"key": "updatedBoardName",
+			"value": "Updated Board"
+		},
+		{
+			"key": "updatedBoardUrl",
+			"value": "https://trello.com/b/zd2X1mR2/updated-board"
+		},
+		{
+			"key": "updatedBoardShortUrl",
+			"value": "https://trello.com/b/zd2X1mR2"
+		},
+		{
+			"key": "updatedBoardLabel",
+			"value": "FAILED"
+		},
+		{
+			"key": "AnotherBoardId",
+			"value": "686f6cd7c6c06f173ec3623e"
+		},
+		{
+			"key": "AnotherBoardName",
+			"value": "Another Board"
+		},
+		{
+			"key": "AnotherBoardUrl",
+			"value": "https://trello.com/b/LisShrJD/another-board"
+		},
+		{
+			"key": "AnotherBoardShortUrl",
+			"value": "https://trello.com/b/LisShrJD"
+		},
+		{
+			"key": "listId",
+			"value": "686f6cdd31a6ade5c8669304"
+		},
+		{
+			"key": "listName",
+			"value": "New List"
+		},
+		{
+			"key": "listPos",
+			"value": "140737488338944"
+		},
+		{
+			"key": "listBoardId",
+			"value": "686f6cd7c6c06f173ec3623e"
+		},
+		{
+			"key": "cardId",
+			"value": "686f6ce0f77a43bb5eb3f47d"
+		},
+		{
+			"key": "dateLastActivity",
+			"value": "2025-07-10T07:33:52.221Z"
+		},
+		{
+			"key": "cardListId",
+			"value": "686f6cdd31a6ade5c8669304"
+		},
+		{
+			"key": "cardNodeId",
+			"value": "ari:cloud:trello::card/workspace/6852e02708f4a5298d688a04/686f6ce0f77a43bb5eb3f47d"
+		},
+		{
+			"key": "cardShortLink",
+			"value": "66jQixjg"
+		},
+		{
+			"key": "cardShortUrl",
+			"value": "https://trello.com/c/66jQixjg"
+		},
+		{
+			"key": "cardUrl",
+			"value": "https://trello.com/c/66jQixjg/1--"
+		},
+		{
+			"key": "cardBoardId",
+			"value": "686f6cd7c6c06f173ec3623e"
+		},
+		{
+			"key": "cardPos",
+			"value": "140737488355328"
+		},
+		{
+			"key": "cardIdShort",
+			"value": "1"
+		},
+		{
+			"key": "getListPos",
+			"value": "140737488338944"
+		},
+		{
+			"key": "moveListPos",
+			"value": "140737488338944"
+		},
+		{
+			"key": "anothercardId",
+			"value": "686f6ce0ffebce447e90ec12"
+		},
+		{
+			"key": "anotherdateLastActivity",
+			"value": "2025-07-10T07:33:52.674Z"
+		},
+		{
+			"key": "anothercardBoardId",
+			"value": "686f6cd7c6c06f173ec3623e"
+		},
+		{
+			"key": "anothercardListId",
+			"value": "686f6cdd31a6ade5c8669304"
+		},
+		{
+			"key": "anothercardNodeId",
+			"value": "ari:cloud:trello::card/workspace/6852e02708f4a5298d688a04/686f6ce0ffebce447e90ec12"
+		},
+		{
+			"key": "anothercardShortLink",
+			"value": "UKBtZdm3"
+		},
+		{
+			"key": "anothercardShortUrl",
+			"value": "https://trello.com/c/UKBtZdm3"
+		},
+		{
+			"key": "anothercardUrl",
+			"value": "https://trello.com/c/UKBtZdm3/2--"
+		},
+		{
+			"key": "anothercardPos",
+			"value": "140737488371712"
+		},
+		{
+			"key": "anothercardIdShort",
+			"value": "2"
+		}
+	]
+}
