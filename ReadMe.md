@@ -1,7 +1,7 @@
 # Trello API
 ### API testing project
 
-🌟 About
+### 🌟 About
 This project is for educational porpuses only. Pull requests are welcome! 
 
 ***API documentation:*** https://developer.atlassian.com/cloud/trello/rest/api-group-actions/#api-group-actions
@@ -11,7 +11,7 @@ Postman
 Postman scripts   
 Newman  
 
-💻 Prerequisites:  
+### 💻 Prerequisites:  
 Node.js  
 newman 
 
