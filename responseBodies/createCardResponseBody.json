@@ -1,0 +1,72 @@
+{
+    "id": "686d028d95f8484d428b200d",
+    "badges": {
+        "attachments": 0,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "lastUpdatedByAi": false,
+        "start": null,
+        "externalSource": null,
+        "attachmentsByType": {
+            "trello": {
+                "board": 0,
+                "card": 0
+            }
+        },
+        "location": false,
+        "votes": 0,
+        "maliciousAttachments": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false
+    },
+    "checkItemStates": [],
+    "closed": false,
+    "dueComplete": false,
+    "dateLastActivity": "2025-07-08T11:35:41.743Z",
+    "desc": "",
+    "descData": {
+        "emoji": {}
+    },
+    "due": null,
+    "dueReminder": null,
+    "email": null,
+    "idBoard": "686ccde6776cc806e0677b94",
+    "idChecklists": [],
+    "idList": "686cf92a46e36ffb580c2622",
+    "idMembers": [],
+    "idMembersVoted": [],
+    "idShort": 1,
+    "idAttachmentCover": null,
+    "labels": [],
+    "idLabels": [],
+    "manualCoverAttachment": false,
+    "name": "Sign up for Trello",
+    "nodeId": "ari:cloud:trello::card/workspace/6852e02708f4a5298d688a04/686d028d95f8484d428b200d",
+    "pinned": false,
+    "pos": 140737488355328,
+    "shortLink": "IIyFhb9s",
+    "shortUrl": "https://trello.com/c/IIyFhb9s",
+    "start": null,
+    "subscribed": false,
+    "url": "https://trello.com/c/IIyFhb9s/1-sign-up-for-trello",
+    "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "dark",
+        "idPlugin": null
+    },
+    "isTemplate": false,
+    "cardRole": null,
+    "mirrorSourceId": null,
+    "attachments": [],
+    "stickers": [],
+    "limits": {}
+}

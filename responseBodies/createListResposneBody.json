@@ -1,0 +1,13 @@
+{
+    "id": "686cf75def6ea63a4e4024e0",
+    "name": "TODO",
+    "closed": false,
+    "color": null,
+    "idBoard": "686cf39865a277ebdc4275b1",
+    "pos": 140737488338944,
+    "type": null,
+    "datasource": {
+        "filter": false
+    },
+    "limits": {}
+}
