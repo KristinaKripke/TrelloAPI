@@ -1,41 +1,41 @@
-# node.js.yml
-
-name: Node.js CI
+name: Node.js CI with Newman Tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x]
-        # Supported Node.js versions
-
+    env:
+      
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build project (if needed)
-      run: npm run build --if-present
+      - name: Debug secrets - see if secrets are loaded
+        run: |
+          echo "Checking environment variables..."
+          echo "TOKEN is set: $TOKEN"
+          echo "KEY is set: $KEY"
 
-    - name: Run Newman with Secrets
-      run: npm run test
-      env:
-        TOKEN: ${{ secrets.token }}
-        KEY: ${{ secrets.key }}
+      - name: Show secret lengths (don't reveal secrets!)
+        run: |
+          echo "TOKEN length: ${#TOKEN}"
+          echo "KEY length: ${#KEY}"
 
-
+      - name: Run Newman tests
+        run: npm run test
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          KEY: ${{ secrets.KEY }}
