@@ -39,7 +39,7 @@ Would like to run this project locally? Open terminal and follow these steps:
 
 2. Install NPM packages
 
-```git i```
+```npm install```
 
 3. Install newman
 
