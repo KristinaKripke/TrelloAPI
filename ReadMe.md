@@ -9,7 +9,7 @@ This project is for educational porpuses only. Pull requests are welcome!
 ### 🎯 Project features/goals:  
 Postman  
 Postman scripts   
-Newman  
+newman  
 
 ### 💻 Prerequisites:  
 Node.js  
