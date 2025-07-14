@@ -3,7 +3,20 @@
 ### API testing project
 
 ### 🌟 About
-This project serves as an educational resource to test REST APIs using Postman, newman, and Node.js. It provides practical, hands-on experience with automating API tests, validating responses, and integrating tests into CI/CD workflows, running tests automatically with GitHub Actions.
+This project serves as an educational resource to test REST APIs using Postman, newman, and Node.js. It provides practical, hands-on experience with automating API tests, validating responses, and integrating tests into CI/CD workflows, running tests automatically with GitHub Actions. Test scenarios for this projects:   
+1. Create a board.     
+2. Get boards.       
+3. Update board.      
+4. Delete board.     
+5. Create a list.       
+6. Get a list.     
+7. Move list to another board.      
+8. Create a card.      
+9. Get a card.       
+10. Delete a card.         
+
+There are positive and negative test cases for all scenarios. A total of 129 tests. If everything is set up correctly all tests are passing.
+You can find all test cases here: [Test cases](/testCases.md)
 
 ***API documentation:*** [TrelloAPI](https://developer.atlassian.com/cloud/trello/rest/api-group-actions/#api-group-actions)
 
@@ -38,7 +51,7 @@ Would like to run this project locally? Open terminal and follow these steps:
 
 ```
 {
-	"id": "6ac11d7c-b9a5-4a48-8b1f-4c6443d6369f",
+	"id": "123 or YOUR_POSTMAN_ID",
 	"name": "TrelloEnv",
 	"values": [
 		{

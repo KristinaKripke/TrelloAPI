@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "newman run TrelloAPI.postman.json --env-var \"token=$TOKEN\" --env-var \"key=$KEY\"",
-    "test-loccally": "newman run TrelloAPI.postman.json -e TrelloEnv.postman.json"
+    "test-locally": "newman run TrelloAPI.postman.json -e TrelloEnv.postman.json"
   },
   "keywords": [],
   "author": "",
