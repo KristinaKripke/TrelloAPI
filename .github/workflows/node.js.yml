@@ -32,18 +32,10 @@ jobs:
     - name: Build project (if needed)
       run: npm run build --if-present
 
-    - name: Debug secrets
-      run: |
-        echo "NG_TOKEN: $NG_TOKEN"
-        echo "NG_KEY: $NG_KEY"
-      env:
-        NG_TOKEN: ${{ secrets.TOKEN }}
-        NG_KEY: ${{ secrets.KEY }}
-
     - name: Run Newman with Secrets
       run: npm run test
       env:
-        NG_TOKEN: ${{ secrets.TOKEN }}
-        NG_KEY: ${{ secrets.KEY }}
+        TOKEN: ${{ secrets.TOKEN }}
+        KEY: ${{ secrets.KEY }}
 
 
