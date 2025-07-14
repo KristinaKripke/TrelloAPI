@@ -22,7 +22,7 @@ Would like to run this project locally? Open terminal and follow these steps:
 
 1. Clone the repo
 
-```git clone```[Repository](https://github.com/KristinaKripke/TrelloAPI)
+```git clone https://github.com/KristinaKripke/TrelloAPI ```
 
 2. Install NPM packages
 
