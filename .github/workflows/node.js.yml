@@ -37,13 +37,13 @@ jobs:
         echo "NG_TOKEN: $NG_TOKEN"
         echo "NG_KEY: $NG_KEY"
       env:
-        NG_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NG_KEY: ${{ secrets.GITHUB_TOKENKEY }}
+        NG_TOKEN: ${{ secrets.TOKEN }}
+        NG_KEY: ${{ secrets.KEY }}
 
     - name: Run Newman with Secrets
       run: npm run test
       env:
-        NG_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NG_KEY: ${{ secrets.GITHUB_KEY }}
+        NG_TOKEN: ${{ secrets.TOKEN }}
+        NG_KEY: ${{ secrets.KEY }}
 
 
