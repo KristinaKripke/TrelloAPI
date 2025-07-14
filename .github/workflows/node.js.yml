@@ -35,30 +35,10 @@ jobs:
     - name: Run unit tests
       run: npm test
 
-    # --- Generate environment JSON for Newman with secrets ---
-    - name: Create Newman environment file with secrets
-      run: |
-        cat > TrelloEnv.postman.json <<EOF
-        {
-          "id": "loader",
-          "name": "Environment",
-          "values": [
-            {
-              "key": "token",
-              "value": "${{ secrets.token }}",
-              "enabled": true
-            },
-            {
-              "key": "key",
-              "value": "${{ secrets.key }}",
-              "enabled": true
-            }
-          ]
-        }
-        EOF
-
-    - name: Run Newman tests via npm script
+    - name: Run Newman with Secrets
       run: npm run test
       env:
-        token: ${{ secrets.token }}
-        key: ${{ secrets.key }}
+        NG_TOKEN: ${{ secrets.token }}
+        NG_KEY: ${{ secrets.key }}
+
+
