@@ -22,17 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Debug secrets - check environment variables
-        run: |
-          echo "Checking environment variables..."
-          echo "TOKEN is set: $TOKEN"
-          echo "KEY is set: $KEY"
-
-      - name: Show secret lengths (do not reveal secrets!)
-        run: |
-          echo "TOKEN length: ${#TOKEN}"
-          echo "KEY length: ${#KEY}"
-
       - name: Run Newman tests
         run: npm run test
         env:
