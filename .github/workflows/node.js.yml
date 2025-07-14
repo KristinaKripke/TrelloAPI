@@ -35,7 +35,7 @@ jobs:
     - name: Run Newman with Secrets
       run: npm run test
       env:
-        TOKEN: ${{ secrets.TOKEN }}
-        KEY: ${{ secrets.KEY }}
+        TOKEN: ${{ secrets.token }}
+        KEY: ${{ secrets.key }}
 
 
