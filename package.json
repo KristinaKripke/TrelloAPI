@@ -1,9 +1,11 @@
+
 {
   "name": "trelloapi",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "newman run TrelloAPI.postman.json -e TrelloEnv.postman.json"
+    "test": "newman run TrelloAPI.postman.json --env-var \"token=$token\" --env-var \"key=$key\"",
+    "test-loccally": "newman run TrelloAPI.postman.json -e TrelloEnv.postman.json"
   },
   "keywords": [],
   "author": "",
