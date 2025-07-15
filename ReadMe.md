@@ -45,9 +45,11 @@ Would like to run this project locally? Open terminal and follow these steps:
 
 ```npm install newman```
 
-4. Create TrelloEnv.postman.json file to add API-key and token
+4. Get token and key for Trello authorization    
 
 [Get Trello authorization here](https://developer.atlassian.com/cloud/trello/power-ups/rest-api-client/#client-initialization)
+
+5. Add environment file env.json (to run locally).    
 
 ```
 {
@@ -72,6 +74,54 @@ Would like to run this project locally? Open terminal and follow these steps:
 	"_postman_exported_using": "Postman/11.50.1"
 }
 ```
+   
+
+5. Set up GitHub environment (to run with GitHub actions).      
+	a) add token and key to environment secrets. (Settings -> Environments -> Environment secrets)   
+	b) add environment to .yml file. 
+
+```
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+	environment: TrelloAPI
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+  
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Postman tests by package scripts
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+        KEY: ${{secrets.KEY}}
+      run: |
+          newman run TrelloAPI.postman.json \
+            --env-var "key=${{ secrets.KEY }}" \
+            --env-var "token=${{ secrets.TOKEN }}"
+```    
 
 ### 🧪 Running tests
 
