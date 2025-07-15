@@ -10,6 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    environment: TrelloAPI
+
     steps:
       - uses: actions/checkout@v4
 
@@ -23,7 +25,7 @@ jobs:
         run: npm ci
 
       - name: Run Newman tests
-        run: npm run test
         env:
           TOKEN: ${{ secrets.TOKEN }}
           KEY: ${{ secrets.KEY }}
+        run: npm run test 
