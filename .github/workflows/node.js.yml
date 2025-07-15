@@ -28,4 +28,5 @@ jobs:
         env:
           TOKEN: ${{ secrets.TOKEN }}
           KEY: ${{ secrets.KEY }}
-        run: npm run test 
+        run: newman run TrelloAPI.postman.json \ --env-var "token=${{secrets.TOKEN}}" \ --env-var "key=${{secrets.KEY}}"
+      
