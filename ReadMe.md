@@ -23,7 +23,7 @@ You can find all test cases here: [Test cases](/testCases.md)
 ### 🎯 Project features/goals:  
 Postman  
 Postman scripts   
-newman
+newman    
 GitHub actions  
 
 ### 💻 Prerequisites:  
